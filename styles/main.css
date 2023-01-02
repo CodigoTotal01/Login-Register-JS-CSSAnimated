@@ -1,0 +1,527 @@
+:root {
+  --letra-circular: "Varela Round", sans-serif;
+  --letra-static: "Roboto", sans-serif;
+  --colorRosa: #e63946;
+  --colorBlanco: white;
+  --colorCeleste: #a8dadc;
+  --colorAzulClaro: #457b9d;
+  --colorAzulOscuro: #1d3557;
+  --colorPlomo: #e5e5e5;
+  --colorNegro: #001219;
+}
+
+/* selector universal */
+* {
+  margin: 0;
+  padding: 0;
+  /* calcula de maenra automatica el tamaño que debe tomar nuestra caja  respetando en todo momento el tamaño del elemento  */
+  /*  para añadir el padin y el border (no margin)  */
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Roboto", sans-serif;
+}
+
+/* fixed deja fijo */
+/* relactive posiciona el elemento pero le permite moverse */
+/* absolute--> posiciona el elemento de manera absoluta, se posiciona en base a otro elemento que lo toma como referencia 
+debe ser hijo de un elemento(quien sirve como referencia (relative)) */
+
+.container {
+  position: relative;
+  width: 100%;
+  background-color: var(--colorHueso);
+  min-height: 100vh;
+  /* permite determinar qie qieremos hacer con el exedente
+  hiden borra el exedente sorbrante /*scroll permite navegar dentro del recuadro */
+  /* auto: foma una barra lateral solo cuando sea necesaria :D , es decir solo si hay exedenet  */
+  overflow: hidden;
+}
+
+.forms-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.signin-signup {
+  position: absolute;
+  top: 50%;
+  /* que se oculte */
+  transform: translate(-50%, -50%);
+  left: 75%;
+  /* de todo el espacio que dispone que se posicione que tome todo el ancho */
+  width: 100%;
+  /* Las transiciones CSS le permiten cambiar los valores de propiedad sin problemas, durante un período determinado. */
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  /* estara superpuesto ante todos */
+  z-index: 5;
+}
+/* El efecto de transición comenzará cuando la propiedad CSS especificada (ancho) cambie de valor. */
+/* Tiene muchos elementos: ease, linear, ease-in.ease-out, ease-in-outLa transition-timing-functionpropiedad especifica la curva de velocidad del efecto de transición */
+/* La transition-delaypropiedad especifica un retraso (en segundos) para el efecto de transición. */
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+/* no entiendo porque diablos no lo toma  */
+form.sign-up-form {
+  opacity: 0;
+  z-index: 1;
+}
+
+form.sign-in-form {
+  z-index: 2;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: var(--colorAzulOscuro);
+  margin-bottom: 1rem;
+}
+
+.input-field {
+  max-width: 380px;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: var(--colorAzulOscuro);
+  /*transiciona el color*/
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.input-field input {
+  background: none;
+  border: none;
+  /*el bordecito que se crea aproposito en los imput*/
+  outline: none;
+  /* interlineado */
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  /* para el contenido que se ingrese no es para el place holder */
+  color: var(--colorNegro);
+}
+
+/*geerar diseño de error*/
+
+.error{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e63946;
+  max-width: 380px;
+  width: 100%;
+  height: 55px;
+  border-radius:20px ;
+  border: 1px solid #001219;
+
+  z-index: 9;
+}
+
+
+
+
+/*! accediendo al place holder  */
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.social-text {
+  color: var(--colorAzulOscuro);
+  padding: 0.7rem 0;
+  font-size: 1rem;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icon {
+  height: 46px;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.45rem;
+  color: var(--colorAzulOscuro);
+  text-decoration: none;
+  border-radius: 50%;
+  /* ! */
+  border: 1px solid var(--colorAzulOscuro);
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+.social-icon:hover {
+  color: var(--colorAzulClaro);
+  border-color: var(--colorAzulClaro);
+}
+
+.btn {
+  width: 180px;
+  outline: none;
+  border: none;
+  background-color: var(--colorAzulOscuro);
+  color: var(--colorBlanco);
+  /* altura */
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid #1d3557;
+  margin: 20px 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  color: var(--colorAzulOscuro);
+  background-color: var(--colorBlanco);
+  border-color: var(--colorAzulOscuro);
+}
+
+.panels-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+/* El ::beforeselector inserta algo antes del contenido de cada elemento seleccionado.
+ */
+/* Utilice el selector :: after para insertar algo después del contenido. */
+
+.container:before {
+  content: "";
+  position: absolute;
+  width: 2000px;
+  height: 2000px;
+  top: -10%;
+  right: 48%;
+  transform: translateY(-50%);
+  /* repasar lo del bacground radiend */
+  background-image: linear-gradient(
+    -45deg,
+    #3663a1 0%,
+    rgb(125, 207, 255) 100%
+  );
+  transition: 1.8s ease-in-out;
+  border-radius: 50%;
+
+  z-index: 6;
+}
+
+.image {
+  width: 100%;
+  transition: transform 1.1s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-align: left;
+  z-index: 6;
+}
+
+.left-panel {
+  /* interesante miestras el este activo pues se podra manejar lo que contenaga el fomulario */
+  pointer-events: pointer;
+  padding: 3rem 17% 2rem 12%;
+}
+
+.right-panel {
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+
+.panel .content {
+  color: var(--colorAzulOscuro);
+  transition: transform 0.9s ease-in-out;
+  transition-delay: 0.6s;
+}
+
+.panel h3 {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.panel p {
+  padding: 0.7rem 0;
+  font-size: 0.95rem;
+}
+
+.btn.transparent {
+  margin: 0;
+  background: none;
+  border: 2px solid #fff;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--colorBlanco);
+}
+.btn.transparent:hover {
+  background-color: var(--colorAzulOscuro);
+}
+
+/* ocualtando la parte de iniciar secion parece ser */
+/* removiendo la imagen u el contenido de el panel derecho */
+.right-panel .image,
+.right-panel .content {
+  transform: translateX(800px);
+}
+
+/*!ahora si viene lo feo, las animacaicones que conosco muy poco en el campo */
+
+.container.sign-up-mode:before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+
+/*!se generaran animaciones segun la seleccion del contenido  */
+.container.sign-up-mode:before {
+  transform: translate(100%, -50%);
+  right: 55%;
+}
+/* ocultamos contenido de si es nuevo por aqui */
+
+.container.sign-up-mode .left-panel .image,
+.container.sign-up-mode .left-panel .content {
+  transform: translateX(-800px);
+}
+
+.container.sign-up-mode .signin-signup {
+  left: 25%;
+}
+
+/* estamos hablando del otro formulario */
+.container.sign-up-mode form.sign-up-form {
+  opacity: 1;
+  z-index: 2;
+}
+/* estamos hablandfo del de ingreso */
+.container.sign-up-mode form.sign-in-form {
+  opacity: 0;
+  z-index: 1;
+}
+/* mostrar el contenido e imagen */
+.container.sign-up-mode .right-panel .image,
+.container.sign-up-mode .right-panel .content {
+  transform: translateX(0%);
+}
+
+.container.sign-up-mode .left-panel {
+  pointer-events: none;
+}
+
+.container.sign-up-mode .right-panel {
+  pointer-events: all;
+}
+/*? pa tableta */
+@media (max-width: 870px) {
+  .container {
+    min-height: 20px;
+    height: 100vh;
+  }
+  /* formularios */
+  .signin-signup {
+    width: 100%;
+    top: 95%;
+    /* lo que le da el efecto de que biene de lejos  */
+    transform: translate(-50%, -100%);
+    transition: 1s 0.8s ease-in-out;
+  }
+  .signin-signup,
+  .container.sign-up-mode .signin-signup {
+    /* centramos el formulario */
+    left: 50%;
+  }
+
+  .panels-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+  }
+
+  .panel {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2.5rem;
+    grid-column: 1 / 2;
+  }
+  .right-panel {
+    grid-row: 3 / 4;
+  }
+  .left-panel {
+    grid-row: 1 / 2;
+  }
+
+  .image {
+    width: 200px;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.6s;
+  }
+
+  .panel .content {
+    /* se aplica una serpracion entre los elementos mas no afeca a ssus lados  */
+    padding-right: 15%;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.8s;
+  }
+  .panel h3 {
+    font-size: 1.2rem;
+  }
+  .panel p {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+  /* para logear o nel */
+  .btn.transparent {
+    width: 110px;
+    height: 35px;
+    font-size: 0.7rem;
+  }
+
+  /*!tocando el tema de la animacion del esa madre circulo */
+  .container:before {
+    /* tamaño */
+    width: 1500px;
+    height: 1500px;
+    transform: translateX(-50%);
+    left: 30%;
+    bottom: 68%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
+
+  .container.sign-up-mode:before {
+    /* movemos el circulo */
+    transform: translate(-50%, 100%);
+    bottom: 31%;
+    right: initial;
+
+  }
+
+
+  /*que venga por arriba */
+  .container.sign-up-mode .left-panel .image,
+  .container.sign-up-mode .left-panel .content {
+    transform: translateY(-300px);
+  }
+  
+  /* despues de hacer su transicion le decimos que se quede uqiero en su posicion 
+   */
+  .container.sign-up-mode .right-panel .image,
+  .container.sign-up-mode .right-panel .content {
+    transform: translateY(0px);
+  
+  }
+
+  /* ahora cuando le piquen a sig in lo oculatamos */
+  .right-panel .image,
+  .right-panel .content {
+    transform: translateY(300px);
+  }
+
+  .container.sign-up-mode .signin-signup {
+    top: 5%;
+    transform: translate(-50%, 0);
+  }
+
+}
+/*! para fono */
+
+@media (max-width: 570px) {
+form{
+  /*acortamos el pading*/
+  padding: 0 1.5rem;
+ 
+}
+
+.image{
+  /* que interesante lo elimina  */
+    display: none;
+}
+
+/* el mensaje */
+.panel .content{
+  padding: 0.5rem  1rem;
+}
+
+.container{
+  padding: 1.5rem;
+}
+
+.container:before {
+  bottom: 73%;
+  left: 50%;
+}
+
+.container.sign-up-mode:before {
+  bottom: 28%;
+  left: 50%;
+}
+
+
+
+
+.container.sign-up-mode:before {
+  /* movemos el circulo */
+  transform: translate(-50%, 100%);
+  bottom: 31%;
+  right: initial;
+
+}
+
+
+/* despues de hacer su transicion le decimos que se quede uqiero en su posicion 
+ */
+.container.sign-up-mode .right-panel .image,
+.container.sign-up-mode .right-panel .content {
+  transform: translateY(2rem);
+
+}
+
+/* ahora cuando le piquen a sig in lo oculatamos */
+.right-panel .image,
+.right-panel .content {
+  transform: translateY(300px);
+}
+
+.container.sign-up-mode .signin-signup {
+  top: 3%;
+  transform: translate(-50%, 0);
+}
+
+}
